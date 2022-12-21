@@ -5,7 +5,7 @@ import { ConsoleLogger } from 'pip-services3-components-nodex';
 
 import { QuotesMemoryPersistence } from 'service-quotes-node';
 import { QuotesController } from 'service-quotes-node';
-import { QuotesHttpServiceV1 } from 'service-quotes-node';
+import { QuotesCommandableHttpServiceV1 } from 'service-quotes-node';
 import { QuotesHttpClientV1 } from '../../src/version1/QuotesHttpClientV1';
 import { QuotesClientFixtureV1 } from './QuotesClientFixtureV1';
 
@@ -16,7 +16,7 @@ var httpConfig = ConfigParams.fromTuples(
 );
 
 suite('QuotesRestClientV1', ()=> {
-    let service: QuotesHttpServiceV1;
+    let service: QuotesCommandableHttpServiceV1;
     let client: QuotesHttpClientV1;
     let fixture: QuotesClientFixtureV1;
 
@@ -25,7 +25,7 @@ suite('QuotesRestClientV1', ()=> {
         let persistence = new QuotesMemoryPersistence();
         let controller = new QuotesController();
 
-        service = new QuotesHttpServiceV1();
+        service = new QuotesCommandableHttpServiceV1();
         service.configure(httpConfig);
 
         let references: References = References.fromTuples(
